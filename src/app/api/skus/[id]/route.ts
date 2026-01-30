@@ -59,7 +59,7 @@ export async function PATCH(
     store.updateSku(id, { status: "pending_approval", proposedChanges });
     const fieldChanges = Object.entries(proposedChanges).map(([field, after]) => ({
       field,
-      before: (sku as Record<string, unknown>)[field],
+      before: (sku as unknown as Record<string, unknown>)[field],
       after,
     }));
     store.addAuditEntry({

@@ -18,8 +18,8 @@ export async function GET(request: NextRequest) {
     return true;
   });
   filtered.sort((a, b) => {
-    const aVal = (a as Record<string, unknown>)[sort];
-    const bVal = (b as Record<string, unknown>)[sort];
+    const aVal = (a as unknown as Record<string, unknown>)[sort];
+    const bVal = (b as unknown as Record<string, unknown>)[sort];
     if (aVal == null && bVal == null) return 0;
     if (aVal == null) return order === "asc" ? -1 : 1;
     if (bVal == null) return order === "asc" ? 1 : -1;
