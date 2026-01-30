@@ -17,7 +17,7 @@ export async function api<T>(
   const res = await fetch(path, {
     ...rest,
     headers,
-    body: body !== undefined ? JSON.stringify(body) : rest.body,
+    body: body !== undefined ? JSON.stringify(body) : undefined,
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error((data as { error?: string }).error ?? "Request failed");
